@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker build -t varshithknaik/react-test .
+      - run: docker build -t varshithknaik/react-test -f Dockerfile.dev .
       - run: docker run -e CI=true varshithknaik/react-test npm test
 
       - name: Generate deployment package
@@ -22,8 +22,8 @@ jobs:
           use_existing_version_if_available : true
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: frontend
-          environment_name: Frontend-env
+          application_name: FRONTEND_DEV
+          environment_name: FRONTENDDEV-env
           existing_bucket_name: elasticbeanstalk-us-east-1-211125767237 
           region: us-east-1
           version_label: ${{ github.sha }}
