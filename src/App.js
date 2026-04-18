@@ -13,7 +13,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          learn react - 1
+          learn react - 1 - from renamed one
         </a>
       </header>
     </div>
